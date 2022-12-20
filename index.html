@@ -89,6 +89,8 @@
         .text-center > a:nth-of-type(2){
             color: red;
         }
+        
+    
     </style>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet" />
 </head>
@@ -375,6 +377,7 @@
                         bibendum nulla sed consectetur.
                     </p>
                 </div>
+              
 
                 <div class="p-4">
                     <h4 class="font-italic">Archives</h4>
@@ -421,17 +424,80 @@
     <script>
         /* JS Exercises should go here */
         // Write a JavaScript functionality to add a new link into the navbar
-        // Write a JavaScript functionality to change the color of the main heading title
-        // Write a JavaScript functionality to change the background of the jumbotron
+        function newLinkToNavBar(newlink) {
+                let navbarNode = document.getElementsByClassName('nav')[0];
+                let newLink = document.createElement('span')
+                newLink.innerText = "Hello"
+                navbarNode.appendChild(newLink)
+            }
 
-        // Write a JavaScript functionality to remove the “twitter” link under the “Elsewhere” section in the aside element. It should happen when the page loads, automatically
 
-        // Write a JavaScript functionality to remove the first 50 characters in the first paragraph for every blog post
-        // Write a JavaScript functionality to add a new Blog Post (div with title and text)
-        // Write a JavaScript functionality to remove the last Blog Post when the user clicks on the "Older" button
+            // Write a JavaScript functionality to change the color of the main heading title
 
-        // Write a JavaScript functionality that will create an alert with the name of the author every time the user hovers the mouse on an author's name
-        // EXTRA Write a JavaScript functionality that will remove the corresponding parent card from the DOM, upon clicking on their “Continue reading” link
+            function changeH1Color() {
+                let h1 = document.getElementsByTagName("h1")[0]
+                h1.style.color = "green"
+            }
+
+
+            // Write a JavaScript functionality to change the background of the jumbotron
+            function changeBgColor() {
+                let jumbotron1 = document.getElementsByClassName("jumbotron")[0]
+                jumbotron1.style.backgroundColor = "pink"
+            }
+
+
+            // Write a JavaScript functionality to remove the “twitter” link under the “Elsewhere” section in the aside element. 
+            //It should happen when the page loads, automatically
+            function removeTwitter() {
+                let ol = document.getElementsByClassName("list-unstyled")
+                let twitterNode = document.querySelector('.p-4:nth-of-type(3)>ol>li:nth-of-type(2)')
+                //let twitterNodes=document.querySelector('aside >.p-4:nth-of-type(3)>ol>li:nth-of-type(2)')
+                twitterNode.hidden = true;
+
+            }
+
+            // Write a JavaScript functionality to remove the first 50 characters in the first paragraph for every blog post
+            // Write a JavaScript functionality to add a new Blog Post (div with title and text)
+            function addNewBlog() {
+                let blog = document.getElementsByClassName("blog-main")[0]
+                let newBlog = document.createElement("div")
+                let newBlogTitle = document.createElement("span")
+                newBlogTitle.innerText = "New Blog"
+                let newBlogText = document.createElement("p")
+                newBlogText.innerText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ipsum dignissimos voluptates nulla dolore explicabo sit accusantium perferendis optio magni. Doloremque earum perspiciatis quo eius molestiae quibusdam sunt, explicabo aperiam"
+
+                let newBlog1 = newBlog.appendChild(newBlogTitle)
+                newBlog1.appendChild(newBlogText)
+                blog.appendChild(newBlog1)
+            }
+            // Write a JavaScript functionality to remove the last Blog Post when the user clicks on the "Older" button
+            function removeLastBlog() {
+
+                let lastblog = document.querySelector('.blog-post:last-of-type')
+                lastblog.hidden = true
+
+
+            }
+
+            // Write a JavaScript functionality that will create an alert with the name of the author every time the user hovers the mouse on an author's name
+            /*function onMouseHover(){
+                let author = document.getElementsByClassName('.blog-post > p:first-of-type > a')
+                for(let i=0;i<author.length;i++){
+               let authorNode=author[i]
+               alert(authorNode.innerText)
+            }
+        }*/
+            // EXTRA Write a JavaScript functionality that will remove the corresponding parent card from the DOM, upon clicking on their “Continue reading” link
+            function onLoadAction() {
+                newLinkToNavBar()
+                changeBgColor()
+                removeTwitter()
+                addNewBlog()
+                let removeBlog = document.addEventListener("click", removeLastBlog)
+                //let hovers1 =document.addEventListener("mouseover", onMouseHover)
+            }
+            window.onload = onLoadAction
     </script>
 </body>
 
